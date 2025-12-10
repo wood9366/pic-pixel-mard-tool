@@ -1,0 +1,109 @@
+:root {
+    --primary: #4a90e2;
+    --bg: #f5f7fa;
+    --card-bg: #ffffff;
+    --text: #333;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 300px;
+    background: var(--card-bg);
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.sidebar h1 { margin: 0; font-size: 1.5rem; color: var(--primary); }
+.desc { font-size: 0.9rem; color: #666; margin: 0; }
+
+.control-group { display: flex; flex-direction: column; gap: 5px; }
+.control-group label { font-weight: 600; font-size: 0.9rem; }
+.control-group small { color: #888; font-size: 0.8rem; }
+
+input, select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover { background: #357abd; }
+button:disabled { background: #ccc; cursor: not-allowed; }
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.placeholder {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 1.2rem;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #eee;
+    margin: 10px 0;
+    image-rendering: pixelated; /* 关键：防止像素模糊 */
+}
+
+.btn-download {
+    display: inline-block;
+    background: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+.btn-download:hover { background: #218838; }
+
+@media (max-width: 768px) {
+    .container { flex-direction: column; }
+    .sidebar { width: auto; }
+}

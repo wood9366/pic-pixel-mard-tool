@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mard 拼豆图纸生成器</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧控制栏 -->
+        <div class="sidebar">
+            <h1>🧩 Mard Bead Tool</h1>
+            <p class="desc">上传图片，自动生成拼豆蓝图和补豆清单。</p>
+            
+            <div class="control-group">
+                <label>1. 上传图片</label>
+                <input type="file" id="uploadInput" accept="image/*">
+            </div>
+
+            <div class="control-group">
+                <label>2. 图纸宽度 (格)</label>
+                <input type="number" id="targetWidth" value="29" min="10" max="200">
+                <small>通常大方板为29格，两块拼板为58格</small>
+            </div>
+
+            <div class="control-group">
+                <label>3. 颜色套装</label>
+                <select id="kitSize">
+                    <option value="24">24 色 (Box 1)</option>
+                    <option value="48" selected>48 色 (Box 1-2)</option>
+                    <option value="72">72 色 (Box 1-3)</option>
+                    <option value="96">96 色 (Box 1-4)</option>
+                    <option value="120">120 色 (Box A-E)</option>
+                    <option value="144">144 色 (Box A-E, 6)</option>
+                    <option value="168">168 色 (Box A-E, 6, 9)</option>
+                    <option value="216">216 色 (Box A-E, 6, 9-11)</option>
+                    <option value="264">264 色 (全套)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label>4. 蓝图格子大小 (px)</label>
+                <input type="number" id="cellSize" value="40" min="20" max="100">
+                <small>决定下载图片的大小和清晰度</small>
+            </div>
+
+            <button id="generateBtn" disabled>生成图纸</button>
+            <div id="status" class="status"></div>
+        </div>
+
+        <!-- 右侧展示区 -->
+        <div class="main-content">
+            <div class="result-section" id="resultArea" style="display: none;">
+                <div class="card">
+                    <h3>🖼️ 像素效果预览</h3>
+                    <canvas id="pixelCanvas"></canvas>
+                    <a id="downloadPixel" class="btn-download">⬇️ 下载像素图</a>
+                </div>
+
+                <div class="card">
+                    <h3>📐 施工蓝图 + 清单</h3>
+                    <div class="blueprint-container">
+                        <canvas id="blueprintCanvas"></canvas>
+                    </div>
+                    <a id="downloadBlueprint" class="btn-download">⬇️ 下载完整蓝图</a>
+                </div>
+            </div>
+            
+            <div id="placeholder" class="placeholder">
+                请在左侧上传图片并点击生成
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
